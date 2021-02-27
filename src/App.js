@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import './App.css'
 import Day from './components/Day'
+import Modal from './components/Modal'
 
 const App = () => {
   const [date, setDate] = useState(new Date())
   const [appointments, setAppointments] = useState({ ...window.localStorage })
+  const [isModalOpen, setIsModelOpen] = useState(false)
+  const [dayEditing, setDayEditing] = useState(null)
 
   const months = [
     'January',
@@ -31,13 +34,30 @@ const App = () => {
     'Saturday',
   ]
 
-  const addAppointment = day => {
+  const handlePrevMonth = () => {
+    if(date >= (new Date())) {
+      setDate(new Date(date.getFullYear(), date.getMonth() - 1))
+    }
+  }
+
+  const addAppointment = (day, appointmentText) => {
     console.log(`Adding appointment to ${currMonth} ${day} ${currYear}`)
 
-    localStorage.setItem(`${currMonth} ${day} ${currYear}`, 'An appointment')
+    localStorage.setItem(`${currMonth} ${day} ${currYear}`, appointmentText)
     setAppointments({
       ...appointments,
-      [`${currMonth} ${day} ${currYear}`]: 'An appointment',
+      [`${currMonth} ${day} ${currYear}`]: appointmentText,
+    })
+    setIsModelOpen(false)
+  }
+
+  const editAppointment = (day, appointmentText) => {
+    console.log(`Editing appointment for ${currMonth} ${day} ${currYear}`)
+
+    localStorage.setItem(`${currMonth} ${day} ${currYear}`, appointmentText)
+    setAppointments({
+      ...appointments,
+      [`${currMonth} ${day} ${currYear}`]: appointmentText,
     })
   }
 
@@ -49,8 +69,8 @@ const App = () => {
     date.getMonth(),
     1
   ).getDay()
-  const startDay =
-    days[new Date(date.getFullYear(), date.getMonth(), 1).getDay()]
+  // const startDay =
+  //   days[new Date(date.getFullYear(), date.getMonth(), 1).getDay()]
   const cells = []
   let day = 1
 
@@ -73,7 +93,10 @@ const App = () => {
           <Day
             day={day}
             appointment={appointment}
+            setDayEditing={setDayEditing}
+            setIsModalOpen={setIsModelOpen}
             addAppointment={() => addAppointment(day_copy)}
+            editAppointment={editAppointment}
             key={`${currMonth} ${day} ${currYear}`}
           />
         )
@@ -84,10 +107,10 @@ const App = () => {
 
   return (
     <div>
+      <button onClick={() => setIsModelOpen(true)}>Open modal</button>
+      {isModalOpen && <Modal setIsModalOpen={setIsModelOpen} currMonth={currMonth} dayEditing={dayEditing} addAppointment={addAppointment} />}
       <button
-        onClick={() =>
-          setDate(new Date(date.getFullYear(), date.getMonth() - 1))
-        }
+        onClick={handlePrevMonth}
       >
         Go to Prev Month
       </button>
@@ -104,7 +127,7 @@ const App = () => {
       <div className="calendar">
         {days.map(day => (
           <div className="cell weekday" key={day}>
-            {day}
+            <span>{day}</span>
           </div>
         ))}
         {cells}
