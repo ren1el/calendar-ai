@@ -2,7 +2,7 @@
 
 A reusable calendar and appointment tracking app.
 
-<img alt="demo" src="https://i.postimg.cc/nhfX8JMn/calendarai.jpg" />
+<img alt="demo" src="https://i.postimg.cc/YSs4smWs/demo.png" />
 
 ## Installation
 
