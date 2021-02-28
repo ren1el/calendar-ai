@@ -6,8 +6,17 @@
 
 html,
 body {
+  width: 100%;
   height: 100%;
   margin: 0;
+}
+
+body > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: 'Jost', sans-serif;
 }
 
 body {
@@ -17,27 +26,106 @@ body {
   font-family: 'Jost', sans-serif;
 }
 
+button {
+  background: none;
+  font-family: 'Jost', sans-serif;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  border: 1px solid #000;
+  box-shadow: 2px 2px #000;
+  padding: 0 0.5em;
+}
+
+input {
+  font-family: 'Jost', sans-serif;
+  font-size: 1rem;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.header-date {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+}
+
+.header-btn {
+  border: none;
+  font-size: 2.5rem;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.calendar-wrapper {
+  width: 1100px;
+  height: 800px;
+  padding: 0 1em;
+}
+
 .calendar {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 4rem repeat(6, 150px);
   border-right: 1px solid #000;
   border-top: 1px solid #000;
+  box-shadow: 5px 5px #000;
 }
 
 .cell {
-  width: 150px;
-  height: 150px;
-  padding: 0.5em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0.75em;
   border-left: 1px solid #000;
   border-bottom: 1px solid #000;
+  font-size: 0.9rem;
+}
+
+.cell:hover .appointment-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .weekday {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: auto;
+  font-weight: 700;
+  background-color: #000;
+  color: #fff;
+}
+
+.not-current-month {
+  background-color: #eee;
 }
 
 .day-number {
   width: 100%;
   text-align: right;
+}
+
+@media (max-width: 1100px) {
+  .calendar-wrapper {
+    width: 100%;
+    padding: 0 1em;
+  }
+
+  .calendar {
+    width: 100%;
+    grid-template-rows: repeat(7, 75px);
+  }
+
+  .cell {
+    width: auto;
+    min-height: 75px;
+    padding: 0.5em;
+  }
 }
