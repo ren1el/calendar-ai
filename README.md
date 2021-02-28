@@ -26,4 +26,4 @@ npm start
 - ✅ One appointment can be made per day
 - ✅ Appointments can be edited and deleted
 
-Created using only React, using localStorage for data persistence.
+Created using only React, using localStorage for data persistence and made to be mobile responsive.
