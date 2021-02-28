@@ -68,13 +68,6 @@ const Modal = ({
               </button>
             </>
           )}
-
-          {/* <h2>
-            {currMonth} {dayEditing} Appointment - "{appointment}"
-          </h2>
-          <input onChange={event => setAppointmentText(event.target.value)} />
-          <button onClick={handleEditAppointment}>Edit appointment</button>
-          <button onClick={handleRemoveAppointment}>Remove appointment</button> */}
         </div>
       </div>
     </>
