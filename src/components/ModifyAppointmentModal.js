@@ -1,7 +1,7 @@
 import '../styles/Modal.css'
 import { useState } from 'react'
 
-const Modal = ({
+const ModifyAppointmentModal = ({
   setIsAppointmentModalOpen,
   currMonth,
   dayEditing,
@@ -11,15 +11,34 @@ const Modal = ({
 }) => {
   const [appointmentText, setAppointmentText] = useState(appointment)
   const [isEditing, setIsEditing] = useState(false)
+  const [errorText, setErrorText] = useState('')
 
   const handleEditAppointment = () => {
-    editAppointment(dayEditing, appointmentText)
-    setIsAppointmentModalOpen(false)
+    if (!appointmentText || !appointmentText.trim()) {
+      setErrorText('Your appointment should contain text!')
+      setTimeout(() => setErrorText(''), 2000)
+      return
+    }
+
+    try {
+      editAppointment(dayEditing, appointmentText)
+      setIsAppointmentModalOpen(false)
+    } catch {
+      setErrorText('There was an error editing an appointment.')
+      setTimeout(() => setErrorText(''), 2000)
+      return
+    }
   }
 
   const handleRemoveAppointment = () => {
-    removeAppointment(dayEditing)
-    setIsAppointmentModalOpen(false)
+    try {
+      removeAppointment(dayEditing)
+      setIsAppointmentModalOpen(false)
+    } catch {
+      setErrorText('There was an error removing an appointment.')
+      setTimeout(() => setErrorText(''), 2000)
+      return
+    }
   }
 
   return (
@@ -39,6 +58,7 @@ const Modal = ({
         </div>
 
         <div className="modal-content">
+          {errorText && <p>{errorText}</p>}
           <h3>
             [{currMonth} {dayEditing} Appointment]
           </h3>
@@ -74,4 +94,4 @@ const Modal = ({
   )
 }
 
-export default Modal
+export default ModifyAppointmentModal

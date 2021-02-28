@@ -1,4 +1,4 @@
-import './App.css'
+import './styles/App.css'
 import { useState, useEffect } from 'react'
 import { useDate } from './hooks/useDate'
 import Header from './components/Header'

@@ -66,14 +66,19 @@ const Calendar = ({
   }
 
   return (
-    <div className="calendar">
-      {days.map(day => (
-        <div className="cell weekday" key={day}>
-          <span>{day}</span>
-        </div>
-      ))}
-      {createCalendarCells()}
-    </div>
+    <>
+      <div className="calendar">
+        {days.map(day => (
+          <div className="cell weekday" key={day}>
+            <span>{day}</span>
+          </div>
+        ))}
+        {createCalendarCells()}
+      </div>
+      <p>
+        Note: Hover over today's date or a future date to add an appointment.
+      </p>
+    </>
   )
 }
 

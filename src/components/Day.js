@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import AppointmentModal from '../components/AppointmentModal'
+import ModifyAppointmentModal from './ModifyAppointmentModal'
 import AddAppointmentModal from './AddAppointmentModal'
 import '../styles/Day.css'
 
@@ -21,7 +21,7 @@ const Day = ({
   return (
     <div className="cell">
       {isAppointmentModalOpen && (
-        <AppointmentModal
+        <ModifyAppointmentModal
           setIsAppointmentModalOpen={setIsAppointmentModalOpen}
           currMonth={currMonth}
           dayEditing={day}
