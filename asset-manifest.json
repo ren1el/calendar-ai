@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/calendar-ai/static/css/main.958539b1.chunk.css",
+    "main.js": "/calendar-ai/static/js/main.f6a27b8f.chunk.js",
+    "main.js.map": "/calendar-ai/static/js/main.f6a27b8f.chunk.js.map",
+    "runtime-main.js": "/calendar-ai/static/js/runtime-main.ed083cca.js",
+    "runtime-main.js.map": "/calendar-ai/static/js/runtime-main.ed083cca.js.map",
+    "static/js/2.06d381e2.chunk.js": "/calendar-ai/static/js/2.06d381e2.chunk.js",
+    "static/js/2.06d381e2.chunk.js.map": "/calendar-ai/static/js/2.06d381e2.chunk.js.map",
+    "index.html": "/calendar-ai/index.html",
+    "static/css/main.958539b1.chunk.css.map": "/calendar-ai/static/css/main.958539b1.chunk.css.map",
+    "static/js/2.06d381e2.chunk.js.LICENSE.txt": "/calendar-ai/static/js/2.06d381e2.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ed083cca.js",
+    "static/js/2.06d381e2.chunk.js",
+    "static/css/main.958539b1.chunk.css",
+    "static/js/main.f6a27b8f.chunk.js"
+  ]
+}
